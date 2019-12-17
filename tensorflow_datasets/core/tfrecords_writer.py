@@ -285,6 +285,8 @@ class BeamWriter(object):
         examples in the bucket and size is the total size in bytes of the
         elements in that bucket. Buckets with no elements are not mentioned.
     """
+    if not shard_len_sizes:
+      raise AssertionError("Not a single example present in the PCollection!")
     total_num_examples = 0
     total_size = 0
     bucket2length = {}
